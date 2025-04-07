@@ -1,21 +1,10 @@
-# Shopify Inventory Check App
+# Shopify Location-Based Inventory (Vercel Serverless)
 
-A private Shopify app to return real-time inventory based on customer location.
+## How to use
 
-## How it works
+1. Upload this folder to a GitHub repo
+2. Connect it to Vercel
+3. Add environment variables from .env.example
+4. Access your endpoint via:
 
-Frontend makes a request like:
-
-GET /check-stock?variant_id=VARIANT_ID&country=IN
-
-This app:
-- Uses Shopify Admin API
-- Fetches the inventory_item_id
-- Checks inventory level at specified warehouse (India or USA)
-- Returns available stock
-
-## To Deploy
-
-1. Copy .env.example to .env
-2. Fill in your Shopify API Token and Location IDs
-3. Deploy to Vercel, Railway, or Render
+   GET /api/check-stock?variant_id=xxx&country=IN
