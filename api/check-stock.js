@@ -1,6 +1,16 @@
 const axios = require('axios');
 
 module.exports = async (req, res) => {
+  // 🔒 Allow CORS
+  res.setHeader('Access-Control-Allow-Origin', '*'); // <-- Or use your domain: 'https://www.kartikresearch.com'
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // 🔄 Handle preflight request
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   const { variant_id, country } = req.query;
 
   if (!variant_id || !country) {
@@ -42,4 +52,4 @@ module.exports = async (req, res) => {
     console.error(err.response?.data || err.message);
     res.status(500).json({ error: 'Failed to fetch stock data' });
   }
-}
+};
